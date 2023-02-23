@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: 1.19.x
+
+      - uses: sigstore/cosign-installer@9becc617647dfa20ae7b1151972e9b3a2c338a2b # v2.8.1
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
       - uses: goreleaser/goreleaser-action@v4
