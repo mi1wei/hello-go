@@ -14,6 +14,10 @@ permissions:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to write releases
+      id-token: write # needed for keyless signing
+      packages: write # needed for ghcr access
     steps:
       - uses: actions/checkout@v3
         with:
@@ -31,7 +35,7 @@ jobs:
           # either 'goreleaser' (default) or 'goreleaser-pro':
           distribution: goreleaser
           version: latest
-          args: release --skip-validate
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro'
